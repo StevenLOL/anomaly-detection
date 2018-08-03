@@ -85,19 +85,19 @@ fscore, ep = select_threshold(p_cv,test_data)
 print(fscore, ep)
 
 #selecting outlier datapoints
-outliers = np.asarray(np.where(p < ep))
+outliers = np.asarray(np.where(p_cv < ep))
 
 plt.figure(1)
 plt.xlabel('Latency (ms)')
 plt.ylabel('Throughput (mb/s)')
 plt.title('Datapoints of throughput vs latency')
-plt.plot(train_data[:,0], train_data[:,1],'b+')
+plt.plot(crossval_data[:,0], crossval_data[:,1],'b+')
 plt.show()
 
 plt.figure(2)
 plt.xlabel('Latency (ms)')
 plt.ylabel('Throughput (mb/s)')
 plt.title('Detection of Outliers')
-plt.plot(train_data[:,0],train_data[:,1],'bx')
-plt.plot(train_data[outliers,0],train_data[outliers,1],'ro')
+plt.plot(crossval_data[:,0],crossval_data[:,1],'bx')
+plt.plot(crossval_data[outliers,0],crossval_data[outliers,1],'ro')
 plt.show()
